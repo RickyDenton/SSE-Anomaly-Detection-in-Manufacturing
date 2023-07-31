@@ -1,0 +1,15 @@
+{
+  "preparationPackage": "datapreparation",
+  "preparedFeaturesPath": "output/features.csv",
+  "classBalancingReport": "output/classBalancing.png",
+  "featureSpaceAnomalousReport": "output/featureSpaceAnomalous.png",
+  "featureSpaceRegularReport": "output/featureSpaceRegular.png",
+  "trainingSetPath": "output/training.csv",
+  "validationSetPath": "output/validation.csv",
+  "testSetPath": "output/test.csv",
+  "minimumNumberOfFeatures": 100,
+  "trainingSetSize": 70,
+  "validationSetSize": 15,
+  "testSetSize": 15,
+  "classBalanceThreshold": 50
+}

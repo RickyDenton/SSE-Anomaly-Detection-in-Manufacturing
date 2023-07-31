@@ -1,0 +1,28 @@
+{
+
+  "parameters": {
+    "learning_rate": ["invscaling", "adaptive"],
+    "hidden_layer_sizes": [[5,10], [5,10,15]],
+    "alpha": [0.0001,0.001],
+    "beta_1": [0.99,0.999],
+    "beta_2": [0.999,0.9999],
+    "solver": ["adam","sgd"],
+    "activation": ["logistic", "relu"]
+  },
+
+  "training_conf": {
+      "training_epochs": 1000,
+      "tol": 0.0005,
+      "n_jobs": -1,
+      "max_fun": 15000
+  },
+
+  "general_information": {
+      "source_pool_location": "datasegregation",
+      "source_train_path": "output/training.csv",
+      "source_test_path": "output/test.csv",
+      "source_valid_path": "output/validation.csv",
+      "dest_pool_location": "output/"
+  }
+
+}

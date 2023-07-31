@@ -1,0 +1,6 @@
+{
+  "ingestionPackage": "dataingestion",
+  "labeledIngestedDataPath": "datastore/processed/labeledSeries/labeledSeries.csv",
+  "unlabeledIngestedDataPath": "datastore/processed/unlabeledSeries/unlabeledSeries.csv",
+  "extractedFeaturesPath": "output/features.csv"
+}

@@ -1,0 +1,46 @@
+{
+ "sampleSize": 16382,
+ "defaultLabel": "tmpMat",
+ "startingIndex": 3,
+ "maxSeriesPerRun": 0,
+ "multiCoreEnable": true,
+ "multiCoreLimit": 0,
+ "labeledSeriesConfiguration":
+  {
+   "inputDirPath": "datastore/raw/labeledSeries",
+   "inputFileExtension": ".dat",
+   "inputFileDatetimeFormat": "%Y-%m-%d %H-%M-%S",
+   "inputSeriesSeparator": ",",
+   "outputFilePath": "datastore/processed/labeledSeries/labeledSeries.csv",
+   "outputSeriesSeparator": ",",
+   "maxNULLperc": 0.2,
+   "maxConsecNULL": 20,
+   "NULLFillingStrategy": "linearInterpolation",
+   "duplicatedPolicy": "save",
+   "malformedPolicy": "save",
+   "malformedOutputDirPath": "datastore/malformed/labeledSeries"
+  },
+ "unlabeledSeriesConfiguration":
+  {
+   "inputDirPath": "datastore/raw/unlabeledSeries",
+   "inputFileExtension": ".dat",
+   "inputFileDatetimeFormat": "%Y-%m-%d %H-%M-%S",
+   "inputSeriesSeparator": ",",
+   "outputFilePath": "datastore/processed/unlabeledSeries/unlabeledSeries.csv",
+   "outputSeriesSeparator": ",",
+   "maxNULLperc": 0.2,
+   "maxConsecNULL": 20,
+   "NULLFillingStrategy": "linearInterpolation",
+   "duplicatedPolicy": "save",
+   "malformedPolicy": "save",
+   "malformedOutputDirPath": "datastore/malformed/unlabeledSeries"
+  },
+ "loggingConfiguration":
+  {
+   "logLevelConsole": "INFO",
+   "logToFile": true,
+   "logLevelFile": "INFO",
+   "logFileWriteMode": "a",
+   "logFilePath": "log/dataingestion.log"
+  }
+}

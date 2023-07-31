@@ -1,0 +1,151 @@
+{
+        "type": "object",
+        "properties": {
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "learning_rate": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "readOnly": true,
+                        "items": {
+                            "type": "string",
+                            "enum": ["invscaling","constant","adaptive"]
+                        }
+                    },
+                    "hidden_layer_sizes": {
+                        "type": "array",
+                        "minItems": 1
+                    },
+                    "alpha": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "readOnly": true,
+                        "items": {
+                            "type": "number",
+                            "exclusiveMinimum": 0.0,
+                            "exclusiveMaximum": 0.5
+                        }
+                    },
+                    "beta_1": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "readOnly": true,
+                        "items": {
+                            "type": "number",
+                            "exclusiveMinimum": 0.8,
+                            "exclusiveMaximum": 1
+                        }
+                    },
+                    "beta_2": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "readOnly": true,
+                        "items": {
+                            "type": "number",
+                            "exclusiveMinimum": 0.8,
+                            "exclusiveMaximum": 1
+                        }
+                    },
+                    "solver": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "readOnly": true,
+                        "items": {
+                            "type": "string",
+                            "enum": ["adam","sgd","lbfgs"]
+                        }
+                    },
+                    "activation": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "readOnly": true,
+                        "items": {
+                            "type": "string",
+                            "enum": ["logistic","relu","tanh","identity"]
+                        }
+                    }
+                },
+                "minProperties": 1
+            },
+            "training_conf": {
+                "type": "object",
+                "properties": {
+                    "training_epochs": {
+                        "type": "integer",
+                        "maximum": 1000,
+                        "minimum": 200,
+                        "readOnly": true
+                    },
+                    "tol": {
+                        "type": "number",
+                        "exclusiveMaximum": 1.0,
+                        "exclusiveMinimum": 0.0,
+                        "readOnly": true
+                    },
+                    "n_jobs": {
+                        "type": "integer",
+                        "maximum": 16,
+                        "minimum": -1,
+                        "readOnly": true
+                    },
+                    "max_fun": {
+                        "type": "integer",
+                        "maximum": 30000,
+                        "minimum": 5000,
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "training_epochs",
+                    "tol",
+                    "n_jobs",
+                    "max_fun"
+                ]
+            },
+            "general_information": {
+                "type": "object",
+                "properties": {
+                    "source_pool_location": {
+                        "type": "string",
+                        "readOnly": true
+                    },
+                    "source_train_path": {
+                        "type": "string",
+                        "readOnly": true
+                    },
+                    "source_test_path": {
+                        "type": "string",
+                        "readOnly": true
+                    },
+                    "source_valid_path": {
+                        "type": "string",
+                        "readOnly": true
+                    },
+                    "dest_pool_location": {
+                        "type": "string",
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "source_pool_location",
+                    "dest_pool_location",
+                    "source_train_path",
+                    "source_test_path",
+                    "source_valid_path"
+                ]
+            }
+        },
+        "required": [
+            "training_conf",
+            "parameters",
+            "general_information"
+        ]
+}
+

@@ -1,0 +1,11 @@
+{
+  "dataPreparationPackage": "datapreparation",
+  "candidateModelPackage": "candidatemodelevaluation",
+  "candidateModelDataPath": "output/candidate_model.sav",
+  "featureDataPath": "output/features.csv",
+  "anomaliesDetectedCountDataPath" : "output/anomaliesDetectedCount.png",
+  "anomaliesForWeekDataPath" : "output/anomaliesForWeeks.png",
+  "detectedAnomaliesDataPath" : "output/detectedAnomalies.csv",
+  "inputPath" : "input",
+  "recalibrateModelScore" : 0.8
+}

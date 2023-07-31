@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "ingestionPackage": {
+      "type": "string"
+    },
+    "labeledIngestedDataPath": {
+      "type": "string"
+    },
+    "unlabeledIngestedDataPath": {
+      "type": "string"
+    },
+    "extractedFeaturesPath": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "ingestionPackage",
+    "labeledIngestedDataPath",
+    "unlabeledIngestedDataPath",
+    "extractedFeaturesPath"
+  ],
+  "additionalProperties": false
+}

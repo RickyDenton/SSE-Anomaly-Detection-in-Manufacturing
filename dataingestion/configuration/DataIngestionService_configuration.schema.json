@@ -1,0 +1,281 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "http://anomalydetectioncompany.com/dataingestion/dataIngestionConfiguration_schema.json",
+ "title": "Data Ingestion Configuration Schema",
+ "description": "JSON Schema defining the configuration format of the Data Ingestion Service for purposes of anomaly detection in manufacturing processes",
+ "type": "object",
+ "properties":
+  {
+   "sampleSize":
+    {
+     "description": "The expected sample size of each series",
+     "type": "integer",
+     "exclusiveMinimum": 0
+    },
+   "defaultLabel":
+    {
+     "description": "The base label to be applied to samples within a series",
+     "type": "string"
+    },
+   "startingIndex":
+    {
+     "description": "The starting index label of samples within a series",
+     "type": "integer",
+     "exclusiveMinimum": 0
+    },
+   "maxSeriesPerRun":
+    {
+     "description": "The maximum number of valid series to be processed per service execution (0 = no limit, ignored if multiCoreEnable = true)",
+     "type":"integer",
+     "minimum": 0
+    },
+   "multiCoreEnable":
+    {
+     "description": "Whether input series should be processed in parallel using multiple cores, if available",
+     "type":"boolean"
+    },
+   "multiCoreLimit":
+    {
+     "description": "The maximum number of cores to be used for the series parallel processing (only if multiCoreProcessing = true, 0 = no limit)",
+     "type":"integer",
+     "minimum": 0
+    },
+   "labeledSeriesConfiguration":
+    {
+     "title": "Labeled Series Configuration",
+     "description": "The subset of the Data Ingestion Service configuration relative to labeled series used for training purposes",
+     "type": "object",
+     "properties":
+      {
+       "inputDirPath":
+        {
+         "description": "The relative path of the input folder where to fetch labeled series from",
+         "type": "string"
+        },
+       "inputFileExtension":
+        {
+         "description": "The file extension of the labeled series",
+         "type": "string"
+        },
+       "inputFileDatetimeFormat":
+        {
+         "description": "The datetime format used as name for the labeled series",
+         "type": "string"
+        },
+       "inputSeriesSeparator":
+        {
+         "description": "The values separator used in the labeled series",
+         "type": "string"
+        },
+       "outputFilePath":
+        {
+         "description": "The relative path of the output file where to append valid labeled series",
+         "type": "string"
+        },
+       "outputSeriesSeparator":
+        {
+         "description": "The separator to be used to append valid labeled series",
+         "type": "string"
+        },
+       "maxNULLperc":
+        {
+         "description": "The maximum percentage of NULL values ∈[0,1] for a labeled series to be valid",
+         "type": "number",
+         "minimum": 0,
+         "maximum": 1
+        },
+       "maxConsecNULL":
+        {
+         "description": "The maximum number of consecutive NULL values for a labeled series to be valid",
+         "type": "integer"
+        },
+       "NULLFillingStrategy":
+        {
+         "description": "How NULL values in a labeled series should be filled",
+         "type": "string",
+         "enum": ["zeroFill","pad","backfill","linearInterpolation"]
+        },
+       "duplicatedPolicy":
+        {
+         "description": "Whether duplicated valid labeled series should be added to the output file or be discarded",
+         "type": "string",
+         "enum": ["drop","save"]
+        },
+       "malformedPolicy":
+        {
+         "description": "Whether malformed labeled series should be saved to the malformed labeled series directory or be discarded",
+         "type": "string",
+         "enum": ["drop","save"]
+        },
+       "malformedOutputDirPath":
+        {
+         "description": "The relative path of the output folder where to put malformed labeled series (only if malformedStrategy = save)",
+         "type": "string"
+        }
+      },
+     "required":
+       [
+        "inputDirPath",
+        "inputFileExtension",
+        "inputSeriesSeparator",
+        "outputFilePath",
+        "outputSeriesSeparator",
+        "maxNULLperc",
+        "maxConsecNULL",
+        "NULLFillingStrategy",
+        "duplicatedPolicy",
+        "malformedPolicy",
+        "malformedOutputDirPath"
+       ],
+     "additionalProperties": false
+    },
+   "unlabeledSeriesConfiguration":
+    {
+     "title": "Unlabeled Series Configuration",
+     "description": "The subset of the Data Ingestion Service configuration relative to unlabeled series used for classification purposes",
+     "type": "object",
+     "properties":
+      {
+       "inputDirPath":
+        {
+         "description": "The relative path of the input folder where to fetch unlabeled series from",
+         "type": "string"
+        },
+       "inputFileExtension":
+        {
+         "description": "The file extension of the unlabeled series",
+         "type": "string"
+        },
+       "inputFileDatetimeFormat":
+        {
+         "description": "The datetime format used as name for the unlabeled series",
+         "type": "string"
+        },
+       "inputSeriesSeparator":
+        {
+         "description": "The values separator used in the unlabeled series",
+         "type": "string"
+        },
+       "outputFilePath":
+        {
+         "description": "The relative path of the output file where to append valid unlabeled series",
+         "type": "string"
+        },
+       "outputSeriesSeparator":
+        {
+         "description": "The separator to be used to append valid unlabelled series",
+         "type": "string"
+        },
+       "maxNULLperc":
+        {
+         "description": "The maximum percentage of NULL values ∈[0,1] for a unlabeled series to be valid",
+         "type": "number",
+         "minimum": 0,
+         "maximum": 1
+        },
+       "maxConsecNULL":
+        {
+         "description": "The maximum number of consecutive NULL values for a unlabeled series to be valid",
+         "type": "integer"
+        },
+       "NULLFillingStrategy":
+        {
+         "description": "How NULL values in a unlabeled series should be filled",
+         "type": "string",
+         "enum": ["zeroFill","linearInterpolation"]
+        },
+       "duplicatedPolicy":
+        {
+         "description": "Whether duplicated valid unlabeled series should be added to the output file or be discarded",
+         "type": "string",
+         "enum": ["drop","save"]
+        },
+       "malformedPolicy":
+        {
+         "description": "Whether malformed unlabeled series should be saved to the malformed unlabeled series directory or be discarded",
+         "type": "string",
+         "enum": ["drop","save"]
+        },
+       "malformedOutputDirPath":
+        {
+         "description": "The relative path of the output folder where to put malformed unlabeled series (only if malformedStrategy = save)",
+         "type": "string"
+        }
+      },
+     "required":
+       [
+        "inputDirPath",
+        "inputFileExtension",
+        "inputSeriesSeparator",
+        "outputFilePath",
+        "outputSeriesSeparator",
+        "maxNULLperc",
+        "maxConsecNULL",
+        "NULLFillingStrategy",
+        "duplicatedPolicy",
+        "malformedPolicy",
+        "malformedOutputDirPath"
+       ],
+     "additionalProperties": false
+    },
+   "loggingConfiguration":
+    {
+     "title": "Logging Configuration",
+     "description": "The subset of the Data Ingestion Service configuration relative to logging purposes",
+     "type": "object",
+     "properties":
+      {
+       "logLevelConsole":
+        {
+         "description": "The minimum priority level for events to be logged to the console (std.out)",
+         "type": "string",
+         "enum": ["DEBUG","INFO","WARNING","CRITICAL"]
+        },
+       "logToFile":
+        {
+         "description": "Whether to output logging events to a log file (ignored for seriesProcesser tasks)",
+         "type": "boolean"
+        },
+       "logLevelFile":
+        {
+         "description": "The minimum priority level for events to be logged into the log file (only if logToFile == True)",
+         "type": "string",
+         "enum": ["DEBUG","INFO","WARNING","CRITICAL"]
+        },
+       "logFileWriteMode":
+        {
+         "description": "The writing mode of logging events to the log file (only if logToFile == True)",
+         "type": "string",
+         "enum": ["a","w"]
+        },
+       "logFilePath":
+        {
+         "description": "The relative path to the logging file (only if logToFile == True)",
+         "type": "string"
+        }
+      },
+     "required":
+       [
+        "logLevelConsole",
+        "logToFile",
+        "logLevelFile",
+        "logFileWriteMode",
+        "logFilePath"
+       ],
+     "additionalProperties": false
+    }
+  },
+ "required":
+  [
+   "sampleSize",
+   "defaultLabel",
+   "startingIndex",
+   "maxSeriesPerRun",
+   "multiCoreEnable",
+   "multiCoreLimit",
+   "labeledSeriesConfiguration",
+   "unlabeledSeriesConfiguration",
+   "loggingConfiguration"
+  ],
+ "additionalProperties": false
+}

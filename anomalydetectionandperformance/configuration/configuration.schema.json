@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "dataPreparationPackage": {
+      "type": "string"
+    },
+     "candidateModelPackage": {
+      "type": "string"
+    },
+     "candidateModelDataPath": {
+      "type": "string"
+    },
+    "featureDataPath": {
+      "type": "string"
+    },
+    "anomaliesDetectedCountDataPath": {
+      "type": "string"
+    },
+    "anomaliesForWeekDataPath": {
+      "type": "string"
+    },
+    "detectedAnomaliesDataPath": {
+      "type": "string"
+    },
+    "inputPath": {
+      "type": "string"
+    },
+    "recalibrateModelScore": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "recalibrateModelScore",
+    "inputPath",
+    "dataPreparationPackage",
+    "candidateModelPackage",
+    "candidateModelDataPath",
+    "featureDataPath",
+    "detectedAnomaliesDataPath",
+    "anomaliesForWeekDataPath",
+    "anomaliesDetectedCountDataPath"
+  ]
+}
